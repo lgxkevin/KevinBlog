@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t lgxkevin/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true lgxkevin/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t lgxkevin/multi-client ./client
+  - docker build -t lgxkevin/multi-nginx ./nginx
+  - docker build -t lgxkevin/multi-server ./server
+  - docker build -t lgxkevin/multi-worker ./worker
+  # Login to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push lgxkevin/multi-client
+  - docker push lgxkevin/multi-nginx
+  - docker push lgxkevin/multi-server
+  - docker push lgxkevin/multi-worker
