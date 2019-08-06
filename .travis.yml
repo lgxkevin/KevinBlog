@@ -20,3 +20,19 @@ after_success:
   - docker push lgxkevin/multi-nginx
   - docker push lgxkevin/multi-server
   - docker push lgxkevin/multi-worker
+
+#access_key_id:
+  #secure: $AWS_ACCESS_KEY
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: multi-docker
+  environment: MultiDocker-env
+  bucket_name: elasticbeanstalk-us-east-2-004804005847
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id:
+    secure: $AWS_ACCESS_KEY
+  secret_key_id:
+    secure: $AWS_SECRET_KEY
