@@ -1,7 +1,9 @@
 version: '3'
 services: 
-  postgres:
-    image: 'postgres:latest'
+  mongo:
+    image: 'mongo'
+    ports:
+      - '27017:27017'
   redis:
     image: 'redis:latest'
   nginx:
@@ -23,13 +25,8 @@ services:
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-      - PGUSER=postgres
-      - PGHOST=postgres
-      - PGDATABASE=postgres
-      - PGPASSWORD=postgres_password
-      - PGPORT=5432
     depends_on:
-      - postgres
+      - mongo
   # Client service
   client:
     build:
