@@ -7,6 +7,7 @@ class Fib extends Component {
     values: {},
     index: ''
   };
+  ApiUrl = process.env.REACT_APP_API_URL;
 
   componentDidMount() {
     // this.fetchValues();
@@ -20,7 +21,7 @@ class Fib extends Component {
 
   async fetchIndexes() {
     // const seenIndexes = await axios.get('/api/values/all');
-    const seenIndexes = await axios.get('http://localhost:5000/values/all');
+    const seenIndexes = await axios.get(this.ApiUrl+ 'values/all');
     console.log(seenIndexes);
     this.setState({ seenIndexes: seenIndexes.data })
   }
@@ -30,7 +31,7 @@ class Fib extends Component {
     event.preventDefault();
 
     // await axios.post('/api/values', {
-    await axios.post('http://localhost:5000/values', {
+    await axios.post(this.ApiUrl + 'values', {
       index: this.state.index
     });
     this.setState({ index: '' });
