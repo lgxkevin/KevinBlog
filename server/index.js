@@ -13,7 +13,7 @@ const mongoose = require('mongoose');
 // Connect to MongoDB
 mongoose
   .connect(
-    'mongodb://mongo:27017/docker-node-mongo',
+    'mongodb://localhost:27017/AddressBook',
     { useNewUrlParser: true }
   )
   .then(() => console.log('MongoDB Connected'))
