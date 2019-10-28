@@ -28,6 +28,9 @@ const ArticleSchema = new Schema({
   time_updated: {
     type: Date,
     min: '2018-01-01'
+  },
+  comments: {
+    type: String
   }
 })
 
