@@ -21,7 +21,7 @@ class TestingMd extends Component {
 
   render(){
     return (
-      <div>
+      <div className="container">
         <ReactMarkdown source={this.state.markdown} />
     </div>
     )
