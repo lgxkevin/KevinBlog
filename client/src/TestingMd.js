@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
-// import TestMd from './assets/testing-md.md';
 
 
 class TestingMd extends Component {

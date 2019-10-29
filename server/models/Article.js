@@ -31,6 +31,10 @@ const ArticleSchema = new Schema({
   },
   comments: {
     type: String
+  },
+  url: {
+    type: String,
+    required: true
   }
 })
 
