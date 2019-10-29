@@ -8,6 +8,7 @@
 
 - 深拷贝则是开辟新的栈，两个对象对应两个不同的地址，修改一个对象的属性，不会改变另一个对象的属性。
 
-![](Untitled-573b5857-99de-49ed-8eab-e3baf52d2f35.png)
+![](/assets/Untitled-573b5857-99de-49ed-8eab-e3baf52d2f35.png)
+
 
 Object.assign( ) 是浅拷贝
