@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
-import TestMd from './assets/testing-md.md'
+import TestMd from './assets/testing-md.md';
 
 
 class TestingMd extends Component {
@@ -12,7 +12,7 @@ class TestingMd extends Component {
   componentWillMount(){
     fetch(TestMd)
     .then(res => {
-      res.text()
+      return res.text()
     })
     .then(text => {
       this.setState({ markdown: text });
@@ -21,8 +21,8 @@ class TestingMd extends Component {
 
   render(){
     return (
-    <div className="content">
-      <ReactMarkdown source={this.state.markdown} />
+      <div>
+        <ReactMarkdown source={this.state.markdown} />
     </div>
     )
   }
