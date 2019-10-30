@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import TestingMd from './TestingMd';
 
 class Fib extends Component {
   state = {
@@ -70,6 +71,8 @@ class Fib extends Component {
 
         <h3>Calculated Values:</h3>
         {this.renderValues()}
+        
+        <TestingMd/>
       </div>
     )
   }

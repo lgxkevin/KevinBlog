@@ -12,24 +12,24 @@ after_success:
   - docker build -t lgxkevin/multi-client ./client
   - docker build -t lgxkevin/multi-nginx ./nginx
   - docker build -t lgxkevin/multi-server ./server
-  - docker build -t lgxkevin/multi-worker ./worker
+  # - docker build -t lgxkevin/multi-worker ./worker
   # Login to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
   - docker push lgxkevin/multi-client
   - docker push lgxkevin/multi-nginx
   - docker push lgxkevin/multi-server
-  - docker push lgxkevin/multi-worker
+  # - docker push lgxkevin/multi-worker
 
 #access_key_id:
   #secure: $AWS_ACCESS_KEY
 deploy:
   provider: elasticbeanstalk
   region: us-east-2
-  app: multi-docker
-  env: MultiDocker-env
+  app: kevin-blog
+  env: KevinBlog-env
   bucket_name: elasticbeanstalk-us-east-2-004804005847
-  bucket_path: docker-multi
+  bucket_path: kevin-blog
   on:
     branch: master
   access_key_id:
