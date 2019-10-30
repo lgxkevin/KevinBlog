@@ -13,12 +13,12 @@ const mongoose = require('mongoose');
 // Connect to MongoDB
 mongoose
   .connect(
-    'mongodb://localhost:27017/AddressBook',
-    { useNewUrlParser: true }
+    `mongodb+srv://${keys.mongoUsername}:${keys.mongoPassword}@cluster0-ghwpk.mongodb.net/test?retryWrites=true&w=majority`,
+    { useNewUrlParser: true,
+      dbName: 'test'}
   )
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
-
 
 // Redis Client Setup
 // const redis = require('redis');
