@@ -7,7 +7,12 @@ class About extends Component {
   render() {
     return (
       <div>
-        This is about.
+        <h2>
+          About Myself
+        </h2>
+        <div>
+          Currently working as a Web developer
+        </div>
       </div>
     )
   }
