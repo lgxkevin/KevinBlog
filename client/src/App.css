@@ -31,3 +31,35 @@
     transform: rotate(360deg);
   }
 }
+/* 
+.lightBlue{
+  color: #7395AE
+}
+.darkBlue{
+  color: #557A95
+}
+.lightGray{
+  color: #379683
+}
+.darkGray{
+  color: #5D5C61
+}
+.brown{
+  color: #B1A296
+} */
+
+.dark {
+  color: #1a1a1d;
+}
+.gray {
+  color: #4E4E50;
+}
+.lightRed {
+  color: #C3073F;
+}
+.darkRed {
+  color: #6F2232;
+}
+.darkPink {
+  color: #950740;
+}

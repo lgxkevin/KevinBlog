@@ -7,6 +7,10 @@ import SideBar from './components/Sidebar';
 import ContentContainer from './components/ContentContainer'
 import Grid from '@material-ui/core/Grid';
 
+// style start
+const windowContainer = {
+  padding: '30px 30px'
+}
 
 class App extends Component {
   render() {
@@ -23,23 +27,24 @@ class App extends Component {
       //     </div>
       //   </div>
       // </Router>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-      >
-        <Grid item xs = {3}>
-          <SideBar/>
-        </Grid>
-        <Grid item xs = {9}>
-          <ContentContainer/>
-        </Grid>
+      <div style = {windowContainer}>
+        <Grid
+          container
+          direction="row"
+          justify="center"
+        >
+          <Grid item xs={3}>
+            <SideBar />
+          </Grid>
+          <Grid item xs={9}>
+            <ContentContainer />
+          </Grid>
 
-      </Grid>
+        </Grid>
+      </div>
 
-        );
-      }
-    }
-    
-    export default App;
+    );
+  }
+}
+
+export default App;
