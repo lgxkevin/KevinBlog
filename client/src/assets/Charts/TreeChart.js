@@ -19,7 +19,7 @@ const data = {
       ]
     },
     {
-      "name": "Front-end Technologies",
+      "name": "Front-end Tech",
       "children": [
         {
           "name": "Angular",
@@ -35,15 +35,15 @@ const data = {
         },
         {
           "name": "Testing",
-          "children":[
-            {"name": "Jasmine"},
-            {"name": "Cypress"}
+          "children": [
+            { "name": "Jasmine" },
+            { "name": "Cypress" }
           ]
         }
       ]
     },
     {
-      "name": "Back-end Technologies",
+      "name": "Back-end Tech",
       "children": [
         {
           "name": ".Net Framework"
@@ -63,32 +63,38 @@ const data = {
       ]
     },
     {
-      "name": "Mobile Technologies",
-      "children":[
-        {"name": "Ionic"}
+      "name": "Mobile Tech",
+      "children": [
+        { "name": "Ionic" }
       ]
     },
     {
-      "name": "Cloud Technologies",
-      "children":[
-        {"name": "AWS"},
-        {"name": "Google Compute Platform"}
+      "name": "Cloud Tech",
+      "children": [
+        { "name": "AWS" },
+        { "name": "Google Compute Platform" }
       ]
     },
     {
       "name": "Others",
       "children": [
-        {"name": "Docker"},
-        {"name": "Kubernetes"},
-        {"name": "Ubuntu"},
-        {"name": "Git"},
-        {"name": "CI/CD"},
-        {"name": "Dev Tools",
-        "children":[
-          {"name":"Android Studio"},
-          {"name":"Postman"}
-        ]
-      }
+        {
+          "name": "Container Tech",
+          "children": [
+            { "name": "Docker" },
+            { "name": "Kubernetes" },
+          ]
+        },
+        { "name": "Ubuntu" },
+        { "name": "Git" },
+        { "name": "CI/CD" },
+        {
+          "name": "Dev Tools",
+          "children": [
+            { "name": "Android Studio" },
+            { "name": "Postman" }
+          ]
+        }
       ]
     }
   ]
