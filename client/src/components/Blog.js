@@ -19,7 +19,7 @@ class Blog extends Component {
           Personal Blog<br/>
         </h2>
 
-        <Grid container direction="row" justify="space-around" >
+        <Grid container spacing={10} >
           <Grid item xs={5}>
             <Card >
               <CardContent>
@@ -44,6 +44,7 @@ class Blog extends Component {
         </Grid>
 
       </div>
+      
     )
   }
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 //MaterialUI
 import Grid from '@material-ui/core/Grid';
 import MoodSharpIcon from '@material-ui/icons/MoodSharp';
