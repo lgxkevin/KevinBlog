@@ -5,12 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import MoodSharpIcon from '@material-ui/icons/MoodSharp';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-
-// style start
-const navbarItem = {
-  fontWeight: "500"
-}
+//Components
+import SidebarNavItem from './SidebarNavItem';
 
 class Sidebar extends Component {
 
@@ -22,22 +18,16 @@ class Sidebar extends Component {
         <Grid item>
           <MoodSharpIcon style={{ zoom: '3' }} />
         </Grid>
-        <Grid item style={navbarItem}>
+        <Grid item>
             Kevin Liu
         </Grid>
-        <Grid item style={navbarItem}>
-          <Button color = "default" component={Link} to="/" style={navbarItem}>HOME</Button>
-        </Grid>
-        <Grid item style={navbarItem}>
-          <Button color = "default" component={Link} to="/about" style={navbarItem}>ABOUT</Button>
-        </Grid>
-        <Grid item style={navbarItem}>
-          <Button color = "default" component={Link} to="/blog" style={navbarItem}>BLOG</Button>
-        </Grid>
-        <Grid item style={navbarItem}>
-          <IconButton aria-label="My Github Page" href="https://github.com/lgxkevin">
+        <SidebarNavItem name = "HOME" routerLink="/"/>
+        <SidebarNavItem name="ABOUT" routerLink="/about"/>
+        <SidebarNavItem name="BLOG" routerLink="/blog"/>
+        <Grid item>
+          <Button aria-label="My Github Page" href="https://github.com/lgxkevin">
             <GitHubIcon />
-          </IconButton>
+          </Button>
         </Grid>
 
       </Grid>
