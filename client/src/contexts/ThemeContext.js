@@ -1,20 +1,20 @@
-import React, {createContext, useState} from 'react'
+import React, { createContext, useState } from 'react'
 
-const Context = createContext('black')
+export const ThemeContext = createContext('black')
 
-const ThemeStore = (props) => {
+const ThemeContextWrapper = (props) => {
   const [theme, setTheme] = useState('black');
-  
+
   const onThemeChange = theme => {
     setTheme(theme)
   };
 
   return (
-    <Context.Provider value ={theme, onThemeChange}>
+    <ThemeContext.Provider value={{theme, onThemeChange: onThemeChange}}>
       {props.children}
-    </Context.Provider>
+    </ThemeContext.Provider>
   )
 
 }
 
-export default ThemeStore;
+export default ThemeContextWrapper;
