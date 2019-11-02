@@ -21,29 +21,31 @@ const useStyles = makeStyles({
 const VideoCard = (props) => {
   const classes = useStyles();
 
+  const videoContentList = () => {
+    return (
+      props.contentList.map((item,i) =>
+        <Typography variant="subtitle2" component="li" key={i}>
+          {item}
+        </Typography>
+      )
+    )
+  }
+
   return (
     <Card>
       <CardContent className={classes.cardContent}>
         <iframe width="100%"
-          src="https://www.youtube.com/embed/-MlNBTSg_Ww"
+          src={props.videoLink}
           frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           title="React Hooks">
         </iframe>
         <Divider />
-        <Typography variant="subtitle2" component="li">
-          React Hooks Introduction
-        </Typography>
-        <Typography variant="subtitle2" component="li">
-          React Hooks Example
-        </Typography>
-        <Typography variant="subtitle2" component="li">
-          Customize React Hooks
-        </Typography>
+        {videoContentList()}
       </CardContent>
 
-      <CardActions>
+      {/* <CardActions>
         <Button size="small" color="primary"
           href="https://academind.com/learn/react/react-hooks-introduction/">
           Article
@@ -52,7 +54,7 @@ const VideoCard = (props) => {
           href="https://github.com/academind/react-hooks-introduction/tree/custom-hooks">
           Source Code
         </Button>
-      </CardActions>
+      </CardActions> */}
     </Card>
   )
 }
