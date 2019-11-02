@@ -10,7 +10,6 @@ import { ThemeContext } from '../contexts/ThemeContext'
 
 const ContentContainer = () => {
   const value = useContext(ThemeContext);
-
   console.log('value: ', value);
   return (
     <div>
