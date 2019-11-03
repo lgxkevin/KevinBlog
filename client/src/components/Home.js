@@ -1,21 +1,35 @@
-import React, { Component } from 'react';
-import ReactEcharts from "echarts-for-react";
-// import {FrontendPieChart} from '../assets/Charts/FrontendPieChart'
-import {TreeChart} from '../assets/Charts/TreeChart'
+import React, {useEffect, useState} from 'react';
+import ReactMarkdown from 'react-markdown';
+import emoji from 'emoji-dictionary'
 
-class Home extends Component {
+const emojiSupport = text => text.value.replace(/:\w+:/gi, name => emoji.getUnicode(name));
 
-  render() {
+export default function Home(){
+  const [markdownContent, setMarkdownContent] = useState('');
+
+  const selfIntroMd = require('../assets/self-introduction.md');
+  useEffect(() => {
+    fetch(selfIntroMd)
+        .then(res => {
+          return res.text()
+        })
+        .then(text => {
+          setMarkdownContent(text);
+        })
+        .catch(err => {
+          console.log('err', err);
+        })
+  });
     return (
       <div>
         <h2>
-          Homepage
+          Welcome!
         </h2>
         <br/>
-        <ReactEcharts option={TreeChart} style={{height: 600}} />
+        {/*<ReactEcharts option={TreeChart} style={{height: 600}} />*/}
+        <ReactMarkdown source={markdownContent} renderers={{ text: emojiSupport }}/>
       </div>
     )
-  }
+
 }
 
-export default Home;
