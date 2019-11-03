@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 // import logo from './logo.svg';
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
@@ -9,44 +9,24 @@ import Grid from '@material-ui/core/Grid';
 
 import ThemeContextWrapper from './contexts/ThemeContext'
 
-
-// style start
-const windowContainer = {
-  padding: '30px 30px'
-}
-
 class App extends Component {
   render() {
     return (
-      // <Router>
-      //   <div className="App">
-      //     <header className="App-header">
-      //       <img src={logo} className="App-logo" alt="logo" />
-      //       <h1 className="App-title">Version 3</h1>
-      //       <Link to="/">Home</Link>
-      //     </header>
-      //     <div>
-      //       <Route exact path="/" component={Fib} />
-      //     </div>
-      //   </div>
-      // </Router>
-      <ThemeContextWrapper>
-        <div style={windowContainer}>
+        <ThemeContextWrapper>
           <Grid
-            container
-            direction="row"
-            justify="center"
+              container
+              direction="row"
+              justify="space-around"
           >
-            <Grid item xs={3}>
-              <SideBar />
+            <Grid container item direction="column" justify="space-around" alignItems="center"
+                  xs={3} spacing={5}>
+              <SideBar/>
             </Grid>
-            <Grid item xs={9}>
-              <ContentContainer />
+            <Grid container item xs={9}>
+              <ContentContainer/>
             </Grid>
-
           </Grid>
-        </div>
-      </ThemeContextWrapper>
+        </ThemeContextWrapper>
 
     );
   }

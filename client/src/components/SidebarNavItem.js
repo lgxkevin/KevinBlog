@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 
 // MUI
 import Grid from '@material-ui/core/Grid';
@@ -22,33 +22,33 @@ const SidebarNavItem = props => {
   let content;
   if (props.items) {
     content =
-      <Grid item>
-        <Button aria-controls={props.name} aria-haspopup="true" onClick={handleClick} >
-          {props.name}
-        </Button>
-        <Menu
-          id={props.name}
-          keepMounted
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
-          {props.items.map((item) =>
-            <MenuItem key={item}
-              onClick={handleClose}
-            > {item}
-            </MenuItem>
-          )}
-        </Menu>
-      </Grid>
+        <Grid item>
+          <Button aria-controls={props.name} aria-haspopup="true" onClick={handleClick}>
+            {props.name}
+          </Button>
+          <Menu
+              id={props.name}
+              keepMounted
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+          >
+            {props.items.map((item) =>
+                <MenuItem key={item}
+                          onClick={handleClose}
+                > {item}
+                </MenuItem>
+            )}
+          </Menu>
+        </Grid>
 
   } else {
-    content = 
-    <Grid item>
-    <Button component={Link} to={props.routerLink}>
-      {props.name}
-    </Button>
-  </Grid>
+    content =
+        <Grid item>
+          <Button component={Link} to={props.routerLink}>
+            {props.name}
+          </Button>
+        </Grid>
 
   }
 
