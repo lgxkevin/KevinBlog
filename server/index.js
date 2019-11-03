@@ -10,15 +10,18 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const mongoose = require('mongoose');
+let mongoConnectionString = `mongodb+srv://${keys.mongoUsername}:${keys.mongoPassword}@cluster0-ghwpk.mongodb.net/test?retryWrites=true&w=majority`
+// let mongoConnectionString = 'mongodb://localhost:27017'
 // Connect to MongoDB
 mongoose
   .connect(
-    `mongodb+srv://${keys.mongoUsername}:${keys.mongoPassword}@cluster0-ghwpk.mongodb.net/test?retryWrites=true&w=majority`,
+    mongoConnectionString,
     { useNewUrlParser: true,
+      useUnifiedTopology: true,
       dbName: 'test'}
   )
   .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
+  .catch(err => {console.log(err); console.log('string: ', mongoConnectionString)});
 
 // Redis Client Setup
 // const redis = require('redis');
@@ -36,11 +39,13 @@ app.get('/', (req, res) => {
   res.send('Hi');
 });
 
-const Item = require('./models/Item');
+const Test = require('./models/Test');
+
+const Item = require('./models/Item')
 
 app.get('/values/all', async (req, res) => {
 
-  Item.find()
+  Test.find()
   .then(items => {
     console.log(items);
     res.send(items);
@@ -49,6 +54,15 @@ app.get('/values/all', async (req, res) => {
     console.log(err);
     res.status(404).json({ msg: 'No items found' });
   });
+  // Item.find()
+  // .then(items => {
+  //   console.log(items);
+  //   res.send(items);
+  // })
+  // .catch(err => {
+  //   console.log(err);
+  //   res.status(404).json({ msg: 'No items found' });
+  // });
 
 });
 
@@ -72,15 +86,15 @@ app.post('/values', async (req, res) => {
   // res.send({ working: true });
 
   const newItem = new Item({
-    name: req.body.index
+    name: 'Kevin'
   });
 
   newItem.save().then(item => {
-    console.log('Success, ', newItem);
+    res.send('Success, ', newItem);
   }).catch(err => console.log('failed'))
 
 });
 
 app.listen(5000, err => {
-  console.log('Listening');
+  console.log('Listening on localhost:5000');
 });

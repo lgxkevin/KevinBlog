@@ -4,18 +4,18 @@ import Grid from "@material-ui/core/Grid"
 
 const VideoTab = () => {
   return(
-  <Grid container>
+  <Grid container spacing = {1}>
     <Grid item xs={4}>
       <VideoCard 
       videoLink="https://www.youtube.com/embed/-MlNBTSg_Ww"
-      contentList={['React Hooks Introduction','React Hooks Example', 'Customize React Hooks']}
+      contentTags={['React Hooks', 'Hook Example','Customize Hooks']}
       />
     </Grid>
 
     <Grid item xs={4}>
       <VideoCard 
       videoLink="https://www.youtube.com/embed/vw3iCuCRm0Q"
-      contentList={['Relax','Focus', 'Study']}
+      contentTags={['Music','Focus', 'Study']}
       />
     </Grid>
   </Grid>
