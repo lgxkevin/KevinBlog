@@ -1,5 +1,5 @@
 const data = {
-  "name": "Web Dev",
+  "name": "Web Dev skills",
   "children": [
     {
       "name": "Programming Languages",
@@ -112,10 +112,10 @@ export const TreeChart = {
 
       data: [data],
 
-      top: '1%',
-      left: '7%',
+      top: '5%',
+      left: '15%',
       bottom: '1%',
-      right: '50%',
+      right: '25%',
 
       symbolSize: 10,
 

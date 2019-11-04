@@ -12,6 +12,7 @@ import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import ExploreIcon from '@material-ui/icons/Explore';
 
 import VideoTab from './AboutTabPabelComponents/VideoTab'
+import SkillsTab from "./AboutTabPabelComponents/SkillsTab";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -45,7 +46,7 @@ function a11yProps(index) {
 
 const useStyles = makeStyles(theme => ({
   root: {
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: 'transparent'
   },
 }));
 
@@ -74,7 +75,7 @@ export default function FullWidthTabs() {
           aria-label="icon label tabs example"
         >
           <Tab icon={<OndemandVideoOutlinedIcon />} label="Liked Videos" {...a11yProps(0)} />
-          <Tab icon={<DescriptionOutlinedIcon />} label="Bookshelf" {...a11yProps(1)} />
+          <Tab icon={<DescriptionOutlinedIcon />} label="Skills" {...a11yProps(1)} />
           <Tab icon={<ExploreIcon />} label="journey" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
@@ -87,7 +88,7 @@ export default function FullWidthTabs() {
           <VideoTab/>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          Articles
+          <SkillsTab/>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
           Trip
