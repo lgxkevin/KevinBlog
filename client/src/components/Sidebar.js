@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 //Components
 import SidebarNavItem from './SidebarNavItem';
 
+
 class Sidebar extends Component {
 
   render() {

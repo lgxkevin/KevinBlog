@@ -4,3 +4,4 @@
 :office: Playing a role as Web developer in Proprius LTD 
 
 :rocket: Focusing on **Angular** and **ASP.NET Core**, and building this blog with **React** and **Node.js**.  
+  
