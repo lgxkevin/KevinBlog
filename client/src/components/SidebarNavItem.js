@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 import {Link} from 'react-router-dom';
+import {ThemeContext} from '../contexts/ThemeContext'
 
 // MUI
 import Grid from '@material-ui/core/Grid';
@@ -7,12 +8,17 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-const SidebarNavItem = props => {
+
+export default function SidebarNavItem (props) {
 
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
+  const value = useContext(ThemeContext);
+
+  const handleClick = (imageUrl) => {
+    // setAnchorEl(event.currentTarget);
+    value.onThemeChange(imageUrl);
+    console.log(value);
   };
 
   const handleClose = () => {
@@ -45,7 +51,7 @@ const SidebarNavItem = props => {
   } else {
     content =
         <Grid item>
-          <Button component={Link} to={props.routerLink}>
+          <Button component={Link} to={props.routerLink} onClick={()=> handleClick(props.imageUrl)}>
             {props.name}
           </Button>
         </Grid>
@@ -54,5 +60,3 @@ const SidebarNavItem = props => {
 
   return content;
 };
-
-export default SidebarNavItem;

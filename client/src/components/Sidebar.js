@@ -7,7 +7,6 @@ import Button from '@material-ui/core/Button';
 //Components
 import SidebarNavItem from './SidebarNavItem';
 
-
 class Sidebar extends Component {
 
   render() {
@@ -19,9 +18,9 @@ class Sidebar extends Component {
           <Grid item>
             Kevin Liu
           </Grid>
-          <SidebarNavItem name="HOME" routerLink="/"/>
-          <SidebarNavItem name="ABOUT" routerLink="/about"/>
-          <SidebarNavItem name="BLOG" routerLink="/blog"/>
+          <SidebarNavItem name="HOME" routerLink="/" imageUrl={'/laptopAndGlasses.jpg'}/>
+          <SidebarNavItem name="ABOUT" routerLink="/about" imageUrl={'/RainbowAndPencil.jpg'}/>
+          <SidebarNavItem name="BLOG" routerLink="/blog" imageUrl={'/Books.jpg'}/>
           <Grid item>
             <Button aria-label="My Github Page" href="https://github.com/lgxkevin">
               <GitHubIcon/>
