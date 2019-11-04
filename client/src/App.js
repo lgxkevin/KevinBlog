@@ -1,50 +1,38 @@
-import React, { Component } from 'react';
+import React, {useContext, useState} from 'react';
 import './App.css';
-// import logo from './logo.svg';
-// import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-// import Fib from './Fib';
 import SideBar from './components/Sidebar';
 import ContentContainer from './components/ContentContainer'
 import Grid from '@material-ui/core/Grid';
+import {ThemeContext} from "./contexts/ThemeContext";
 
-// style start
-const windowContainer = {
-  padding: '30px 30px'
-}
 
-class App extends Component {
-  render() {
-    return (
-      // <Router>
-      //   <div className="App">
-      //     <header className="App-header">
-      //       <img src={logo} className="App-logo" alt="logo" />
-      //       <h1 className="App-title">Version 3</h1>
-      //       <Link to="/">Home</Link>
-      //     </header>
-      //     <div>
-      //       <Route exact path="/" component={Fib} />
-      //     </div>
-      //   </div>
-      // </Router>
-      <div style = {windowContainer}>
-        <Grid
+export default function App() {
+  const value = useContext(ThemeContext);
+
+  let styles = {
+  HomeBackGround: {
+    backgroundImage: `url(${value.theme})`,
+    backgroundPosition: 'center bottom',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    paddingBottom: 320
+  }
+};
+  return (
+      <Grid
           container
           direction="row"
-          justify="center"
-        >
-          <Grid item xs={3}>
-            <SideBar />
-          </Grid>
-          <Grid item xs={9}>
-            <ContentContainer />
-          </Grid>
-
+          justify="space-around"
+          style={styles.HomeBackGround}
+      >
+        <Grid container item direction="column" justify="flex-start" alignItems="center"
+              xs={2} spacing={5}>
+          <SideBar/>
         </Grid>
-      </div>
+        <Grid container item xs={9}>
+          <ContentContainer/>
+        </Grid>
+      </Grid>
 
-    );
-  }
+  );
 }
-
-export default App;

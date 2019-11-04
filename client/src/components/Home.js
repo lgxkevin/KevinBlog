@@ -1,21 +1,51 @@
-import React, { Component } from 'react';
-import ReactEcharts from "echarts-for-react";
-// import {FrontendPieChart} from '../assets/Charts/FrontendPieChart'
-import {TreeChart} from '../assets/Charts/TreeChart'
+import React, {useEffect, useState} from 'react';
+import ReactMarkdown from 'react-markdown';
+import emoji from 'emoji-dictionary'
 
-class Home extends Component {
+import Grid from '@material-ui/core/Grid';
 
-  render() {
-    return (
+// import backgroundImage from '../assets/Images/laptopAndGlasses.jpg'
+
+const emojiSupport = text => text.value.replace(/:\w+:/gi, name => emoji.getUnicode(name));
+
+// let styles = {
+//   HomeBackGround: {
+//     backgroundImage: `url(${backgroundImage})`,
+//     backgroundPosition: 'center bottom',
+//     backgroundSize: 'cover',
+//     backgroundRepeat: 'no-repeat',
+//     paddingBottom: '40%'
+//   }
+// };
+
+export default function Home() {
+  const [markdownContent, setMarkdownContent] = useState('');
+
+  const selfIntroMd = require('../assets/self-introduction.md');
+  useEffect(() => {
+    fetch(selfIntroMd)
+        .then(res => {
+          return res.text()
+        })
+        .then(text => {
+          setMarkdownContent(text);
+        })
+        .catch(err => {
+          console.log('err', err);
+        })
+  });
+  return (
       <div>
-        <h2>
-          Homepage
-        </h2>
+
         <br/>
-        <ReactEcharts option={TreeChart} style={{height: 600}} />
+        <Grid container justify="center"
+              alignItems="center">
+          <Grid item xs={12} md={8} lg={6}>
+            <ReactMarkdown source={markdownContent} renderers={{text: emojiSupport}}/>
+          </Grid>
+        </Grid>
       </div>
-    )
-  }
+  )
+
 }
 
-export default Home;
