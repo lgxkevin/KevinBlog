@@ -91,7 +91,7 @@ export default function FullWidthTabs() {
           <SkillsTab/>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-          Trip
+          Coming soon...
         </TabPanel>
       </SwipeableViews>
     </div>
