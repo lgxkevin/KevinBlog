@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import {makeStyles} from '@material-ui/core/styles';
 
 //MaterialUI
 import Grid from '@material-ui/core/Grid';
@@ -9,44 +10,35 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 
-class Blog extends Component {
+const useStyles = makeStyles(theme=>({
+  root: {
+    backgroundColor: 'rgb(0,0,0,0.02)'
+  }
+}));
 
 
-  render() {
-    return (
+export default function Blog(pros) {
+  const classes = useStyles();
+
+  return (
       <div>
         <h2>
           Personal Blog<br/>
         </h2>
 
-        <Grid container spacing={10} >
+        <Grid container spacing={10}>
           <Grid item xs={5}>
-            <Card >
+            <Card className={classes.root}>
               <CardContent>
-              <ReactMarkdown source={'# This is my first blog\n\n ### Kevin'} />
+                <ReactMarkdown source={'# Set Array, Map Object\n\n ### Details on Set Array and Map'}/>
               </CardContent>
               <CardActions>
-                <Button size="small">Learn More</Button>
-              </CardActions>
-            </Card>
-          </Grid>
-
-          <Grid item xs={5}>
-            <Card >
-              <CardContent>
-              <ReactMarkdown source={'# This is my second blog\n\n ### Kevin'} />
-              </CardContent>
-              <CardActions>
-                <Button size="small">View More</Button>
+                <Button size="small" component={Link} to="/blogArticles">Learn More</Button>
               </CardActions>
             </Card>
           </Grid>
         </Grid>
-
       </div>
-      
-    )
-  }
+  )
 }
 
-export default Blog;

@@ -11,7 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 export default function SidebarNavItem (props) {
 
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState('Kevin');
 
   const value = useContext(ThemeContext);
 
