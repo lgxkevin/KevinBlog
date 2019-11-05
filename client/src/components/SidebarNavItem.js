@@ -18,7 +18,6 @@ export default function SidebarNavItem (props) {
   const handleClick = (imageUrl) => {
     // setAnchorEl(event.currentTarget);
     value.onThemeChange(imageUrl);
-    console.log(value);
   };
 
   const handleClose = () => {
