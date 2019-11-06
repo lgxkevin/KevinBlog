@@ -5,7 +5,8 @@ import Home from './Home';
 import About from './About'
 import Blog from './Blog'
 import BlogArticle from "./BlogArticle";
-
+import AdminComponent from './AdminComponent'
+import LoginComponent from "./LoginComponent";
 
 import Grid from '@material-ui/core/Grid';
 
@@ -17,6 +18,7 @@ const ContentContainer = () => {
           <Route path='/blog' component={Blog}/>
           <Route path='/blogArticles' component={BlogArticle}/>
           <Route exact path="/" component={Home}/>
+          <Route path='/admin' component={AdminComponent}/>
         </Switch>
       </Grid>
   )
