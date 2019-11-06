@@ -34,14 +34,12 @@ mongoose
 // const redisPublisher = redisClient.duplicate();
 
 // Express route handlers
-
-app.get('/', (req, res) => {
-  res.send('Hi');
-});
+const BlogRoute = require('./Routes/BlogRoute');
+app.use(BlogRoute);
 
 const Test = require('./models/Test');
 
-const Item = require('./models/Item')
+const Item = require('./models/Item');
 
 app.get('/values/all', async (req, res) => {
 
