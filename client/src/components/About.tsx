@@ -20,7 +20,7 @@ interface TabPanelProps {
     value: any;
 }
 
-function TabPanel(props: TabPanelProps) {
+function TabPanel(props: TabPanelProps):JSX.Element{
     const {children, value, index, ...other} = props;
     return (
         <Typography
@@ -44,8 +44,7 @@ function a11yProps(index: number) {
 }
 
 
-export default function FullWidthTabs() {
-    // const classes = useStyles();
+const FullWidthTabs: React.FC<any> = (props) => {
     const theme = useTheme();
     const [value, setValue] = React.useState(0);
 
@@ -58,36 +57,38 @@ export default function FullWidthTabs() {
     };
 
     return (
-    <div style={{backgroundColor: 'transparent'}}>
-        <AppBar position="static" color="default">
-            <Tabs
-                value={value}
-                onChange={handleChange}
-                indicatorColor="primary"
-                textColor="primary"
-                variant="fullWidth"
-                aria-label="icon label tabs example"
+        <div style={{backgroundColor: 'transparent'}}>
+            <AppBar position="static" color="default">
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    variant="fullWidth"
+                    aria-label="icon label tabs example"
+                >
+                    <Tab icon={<OndemandVideoOutlinedIcon/>} label="Liked Videos" {...a11yProps(0)} />
+                    <Tab icon={<DescriptionOutlinedIcon/>} label="Skills" {...a11yProps(1)} />
+                    <Tab icon={<ExploreIcon/>} label="journey" {...a11yProps(2)} />
+                </Tabs>
+            </AppBar>
+            <SwipeableViews
+                axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                index={value}
+                onChangeIndex={handleChangeIndex}
             >
-                <Tab icon={<OndemandVideoOutlinedIcon/>} label="Liked Videos" {...a11yProps(0)} />
-                <Tab icon={<DescriptionOutlinedIcon/>} label="Skills" {...a11yProps(1)} />
-                <Tab icon={<ExploreIcon/>} label="journey" {...a11yProps(2)} />
-            </Tabs>
-        </AppBar>
-        <SwipeableViews
-            axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-            index={value}
-            onChangeIndex={handleChangeIndex}
-        >
-            <TabPanel value={value} index={0} dir={theme.direction}>
-                <VideoTab/>
-            </TabPanel>
-            <TabPanel value={value} index={1} dir={theme.direction}>
-                <SkillsTab/>
-            </TabPanel>
-            <TabPanel value={value} index={2} dir={theme.direction}>
-                Coming soon...
-            </TabPanel>
-        </SwipeableViews>
-    </div>
+                <TabPanel value={value} index={0} dir={theme.direction}>
+                    <VideoTab/>
+                </TabPanel>
+                <TabPanel value={value} index={1} dir={theme.direction}>
+                    <SkillsTab/>
+                </TabPanel>
+                <TabPanel value={value} index={2} dir={theme.direction}>
+                    Coming soon...
+                </TabPanel>
+            </SwipeableViews>
+        </div>
     )
-}
+};
+
+export default FullWidthTabs
