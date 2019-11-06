@@ -15,7 +15,6 @@ export default function App() {
     backgroundPosition: 'center bottom',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    paddingBottom: 320
   }
 };
   return (
@@ -26,7 +25,7 @@ export default function App() {
           style={styles.HomeBackGround}
       >
         <Grid container item direction="column" justify="flex-start" alignItems="center"
-              xs={2} spacing={5}>
+              xs={2} spacing={6} style={{height:'70vh'}}>
           <SideBar/>
         </Grid>
         <Grid container item xs={9}>

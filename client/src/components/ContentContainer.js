@@ -11,7 +11,7 @@ import Grid from '@material-ui/core/Grid';
 
 const ContentContainer = () => {
   return (
-      <Grid item xs={12}>
+      <Grid item xs={12} style={{height: '100vh'}}>
         <Switch>
           <Route path="/about" component={About}/>
           <Route path='/blog' component={Blog}/>
