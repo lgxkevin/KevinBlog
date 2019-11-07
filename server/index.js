@@ -21,7 +21,7 @@ mongoose
       dbName: 'test'}
   )
   .then(() => console.log('MongoDB Connected'))
-  .catch(err => {console.log(err); console.log('string: ', mongoConnectionString)});
+  .catch(err => console.log(err));
 
 // Redis Client Setup
 // const redis = require('redis');
