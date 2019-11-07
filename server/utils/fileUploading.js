@@ -1,8 +1,5 @@
 const express = require('express');
-const app = express();
 const AWS = require('aws-sdk');
-const fs = require('fs');
-const fileType = require('file-type');
 const bluebird = require('bluebird');
 const keys = require('../keys');
 
@@ -15,7 +12,7 @@ AWS.config.setPromisesDependency(bluebird);
 
 const s3 = new AWS.S3();
 
-const uploadFile = (buffer, name, type) => {
+exports.fileUploading = (buffer, name, type) => {
   const params = {
     ACL: 'public-read',
     Body: 'buffer',
