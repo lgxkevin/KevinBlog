@@ -6,6 +6,7 @@ const multipartMiddleware = multipart();
 
 router.get('/', BlogController.testing);
 
+
 router.post('/blog', multipartMiddleware, BlogController.postBlog);
 
 module.exports = router;
