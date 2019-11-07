@@ -29,13 +29,10 @@ const ArticleSchema = new Schema({
     type: Date,
     min: '2018-01-01'
   },
-  comments: {
-    type: String
-  },
   url: {
     type: String,
     required: true
   }
-})
+});
 
 module.exports = Article = mongoose.model('Article', ArticleSchema);

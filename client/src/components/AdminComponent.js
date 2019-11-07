@@ -1,23 +1,39 @@
-import React from "react";
-import Button from "@material-ui/core/Button"
+import React, {useState} from "react";
+import axios from 'axios';
 
 const AdminComponent = (props) => {
+  const [file, setFile] = useState();
 
-  const SubmitClick =() => {
-    console.log('Button clicked!')
+
+  const handleFileUpload = (event) => {
+    setFile(event.target.files[0]);
+  };
+
+  const submitFile = (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append('file', file);
+    axios.post('http://localhost:5000/blog', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        })
   };
 
   return (
-      <div>
-        Admin works
-        <Button
-            variant="contained"
-            color="primary"
-            onClick={()=>SubmitClick()}
-        >
-          Submit
-        </Button>
-      </div>
+      <form onSubmit={event => submitFile(event)}>
+        <input
+            type='file'
+            onChange={event => handleFileUpload(event)}
+        />
+        <button type='submit'>Send</button>
+      </form>
   )
 };
 
