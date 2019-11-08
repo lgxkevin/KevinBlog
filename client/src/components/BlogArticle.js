@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import ReactMarkdown from 'react-markdown';
 import Grid from "@material-ui/core/Grid";
 
-export default function BlogArticle(props) {
+export default function BlogArticle() {
   const [article, setArticle] = useState('');
 
   useEffect(() => {

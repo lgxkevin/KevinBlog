@@ -17,10 +17,10 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-const LoginComponent = () => {
+export default function LoginComponent():JSX.Element {
     const classes = useStyles();
 
-    const LoginCheck = () => {
+    const LoginCheck = ():void => {
         // Nav to AdminComponent if success
         console.log('Button clicked!')
     };
@@ -49,8 +49,6 @@ const LoginComponent = () => {
             >
                 Login
             </Button>
-
         </form>
     )
 };
-export default LoginComponent;

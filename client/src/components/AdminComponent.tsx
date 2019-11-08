@@ -1,15 +1,21 @@
 import React, {useState} from "react";
 import axios from 'axios';
+import MarkdownPreview from './MarkdownPreview'
 
-const AdminComponent = (props) => {
+type FormElement = React.FormEvent<HTMLFormElement>
+
+export default function AdminComponent ():JSX.Element {
   const [file, setFile] = useState();
 
-
-  const handleFileUpload = (event) => {
-    setFile(event.target.files[0]);
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>):void => {
+      if (!event.target.files) {
+          console.log('No file selected')
+      } else {
+        setFile(event.target.files[0]);
+      }
   };
 
-  const submitFile = (event) => {
+  const submitFile = (event: FormElement):void => {
     event.preventDefault();
     const formData = new FormData();
     formData.append('file', file);
@@ -34,7 +40,8 @@ const AdminComponent = (props) => {
         />
         <button type='submit'>Send</button>
       </form>
+
+      // <MarkdownPreview/>
   )
 };
 
-export default AdminComponent;
