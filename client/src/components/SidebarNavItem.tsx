@@ -8,14 +8,24 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
+interface ISidebarNavItemProps {
+    name: string,
+    routerLink: string,
+    imageUrl: string,
+    items?: string[]
+}
+interface IThemeContext {
+    theme: string,
+    onThemeChange: (arg0: string) => void
+}
 
-export default function SidebarNavItem (props) {
+export default function SidebarNavItem (props: ISidebarNavItemProps): JSX.Element {
 
-  const [anchorEl, setAnchorEl] = useState('Kevin');
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>();
 
-  const value = useContext(ThemeContext);
+  const value: IThemeContext = useContext(ThemeContext);
 
-  const handleClick = (imageUrl) => {
+  const handleClick = (imageUrl:string) => {
     // setAnchorEl(event.currentTarget);
     value.onThemeChange(imageUrl);
   };
@@ -28,7 +38,7 @@ export default function SidebarNavItem (props) {
   if (props.items) {
     content =
         <Grid item>
-          <Button aria-controls={props.name} aria-haspopup="true" onClick={handleClick}>
+          <Button aria-controls={props.name} aria-haspopup="true" onClick={()=> handleClick(props.imageUrl)}>
             {props.name}
           </Button>
           <Menu
@@ -56,6 +66,5 @@ export default function SidebarNavItem (props) {
         </Grid>
 
   }
-
   return content;
 };

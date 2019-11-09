@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment} from 'react';
 //MaterialUI
 import Grid from '@material-ui/core/Grid';
 import MoodSharpIcon from '@material-ui/icons/MoodSharp';
@@ -7,9 +7,7 @@ import Button from '@material-ui/core/Button';
 //Components
 import SidebarNavItem from './SidebarNavItem';
 
-class Sidebar extends Component {
-
-  render() {
+export default function Sidebar():JSX.Element{
     return (
         <Fragment>
           <Grid item>
@@ -18,18 +16,14 @@ class Sidebar extends Component {
           <Grid item>
             Kevin Liu
           </Grid>
-          <SidebarNavItem name="HOME" routerLink="/" imageUrl={'/laptopAndGlasses.jpg'}/>
-          <SidebarNavItem name="ABOUT" routerLink="/about" imageUrl={'/RainbowAndPencil.jpg'}/>
-          <SidebarNavItem name="BLOG" routerLink="/blog" imageUrl={'/Books.jpg'}/>
+          <SidebarNavItem name="HOME" routerLink="/" imageUrl='/laptopAndGlasses.jpg'/>
+          <SidebarNavItem name="ABOUT" routerLink="/about" imageUrl='/RainbowAndPencil.jpg'/>
+          <SidebarNavItem name="BLOG" routerLink="/blog" imageUrl='/Books.jpg'/>
           <Grid item>
             <Button aria-label="My Github Page" href="https://github.com/lgxkevin">
               <GitHubIcon/>
             </Button>
           </Grid>
-
         </Fragment>
     )
-  }
 }
-
-export default Sidebar;

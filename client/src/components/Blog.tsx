@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import {makeStyles} from '@material-ui/core/styles';
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme=>({
 }));
 
 
-export default function Blog(pros) {
+export default function Blog():JSX.Element {
   const classes = useStyles();
 
   return (
