@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react';
 import {Link} from 'react-router-dom';
 import {ThemeContext} from '../contexts/ThemeContext'
+import IThemeContext from "../Interfaces/IThemeContext";
 
 // MUI
 import Grid from '@material-ui/core/Grid';
@@ -14,57 +15,53 @@ interface ISidebarNavItemProps {
     imageUrl: string,
     items?: string[]
 }
-interface IThemeContext {
-    theme: string,
-    onThemeChange: (arg0: string) => void
-}
 
-export default function SidebarNavItem (props: ISidebarNavItemProps): JSX.Element {
+export default function SidebarNavItem(props: ISidebarNavItemProps): JSX.Element {
 
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>();
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>();
 
-  const value: IThemeContext = useContext(ThemeContext);
+    const value = useContext<IThemeContext | null>(ThemeContext);
 
-  const handleClick = (imageUrl:string) => {
-    // setAnchorEl(event.currentTarget);
-    value.onThemeChange(imageUrl);
-  };
+    const handleClick = (imageUrl: string) => {
+        // setAnchorEl(event.currentTarget);
+        value!.onThemeChange(imageUrl);
+    };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
-  let content;
-  if (props.items) {
-    content =
-        <Grid item>
-          <Button aria-controls={props.name} aria-haspopup="true" onClick={()=> handleClick(props.imageUrl)}>
-            {props.name}
-          </Button>
-          <Menu
-              id={props.name}
-              keepMounted
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-          >
-            {props.items.map((item) =>
-                <MenuItem key={item}
-                          onClick={handleClose}
-                > {item}
-                </MenuItem>
-            )}
-          </Menu>
-        </Grid>
+    let content;
+    if (props.items) {
+        content =
+            <Grid item>
+                <Button aria-controls={props.name} aria-haspopup="true" onClick={() => handleClick(props.imageUrl)}>
+                    {props.name}
+                </Button>
+                <Menu
+                    id={props.name}
+                    keepMounted
+                    anchorEl={anchorEl}
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                >
+                    {props.items.map((item) =>
+                        <MenuItem key={item}
+                                  onClick={handleClose}
+                        > {item}
+                        </MenuItem>
+                    )}
+                </Menu>
+            </Grid>
 
-  } else {
-    content =
-        <Grid item>
-          <Button component={Link} to={props.routerLink} onClick={()=> handleClick(props.imageUrl)}>
-            {props.name}
-          </Button>
-        </Grid>
+    } else {
+        content =
+            <Grid item>
+                <Button component={Link} to={props.routerLink} onClick={() => handleClick(props.imageUrl)}>
+                    {props.name}
+                </Button>
+            </Grid>
 
-  }
-  return content;
+    }
+    return content;
 };
