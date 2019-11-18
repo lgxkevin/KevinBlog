@@ -4,19 +4,7 @@ import emoji from 'emoji-dictionary'
 
 import Grid from '@material-ui/core/Grid';
 
-// import backgroundImage from '../assets/Images/laptopAndGlasses.jpg'
-
 const emojiSupport = text => text.value.replace(/:\w+:/gi, name => emoji.getUnicode(name));
-
-// let styles = {
-//   HomeBackGround: {
-//     backgroundImage: `url(${backgroundImage})`,
-//     backgroundPosition: 'center bottom',
-//     backgroundSize: 'cover',
-//     backgroundRepeat: 'no-repeat',
-//     paddingBottom: '40%'
-//   }
-// };
 
 export default function Home() {
   const [markdownContent, setMarkdownContent] = useState('');
@@ -46,6 +34,5 @@ export default function Home() {
         </Grid>
       </div>
   )
-
 }
 

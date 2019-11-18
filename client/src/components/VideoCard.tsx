@@ -12,6 +12,10 @@ import Grid from '@material-ui/core/Grid'
 
 import ReactPlayer from 'react-player';
 
+interface VideoCardProps {
+    contentTags: Array<string>,
+    videoLink: string
+}
 
 const useStyles = makeStyles({
   cardContent: {
@@ -22,10 +26,10 @@ const useStyles = makeStyles({
   }
 });
 
-const VideoCard = (props) => {
+const VideoCard = (props: VideoCardProps):JSX.Element => {
   const classes = useStyles();
 
-  const videoContentTags = () => {
+  const videoContentTags = ():Array<JSX.Element>=> {
     return (
       props.contentTags.map((item,i) =>
         <Grid item key={i}>
@@ -37,7 +41,7 @@ const VideoCard = (props) => {
         </Grid>
       )
     )
-  }
+  };
 
   return (
     <Card>
