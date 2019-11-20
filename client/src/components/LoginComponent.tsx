@@ -2,6 +2,7 @@ import * as React from 'react';
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
+import auth from '../services/auth';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export default function LoginComponent():JSX.Element {
+export default function LoginComponent(props:any):JSX.Element {
     const classes = useStyles();
 
     const LoginCheck = ():void => {
@@ -45,7 +46,13 @@ export default function LoginComponent():JSX.Element {
             <Button
                 variant="contained"
                 color="primary"
-                onClick={() => LoginCheck()}
+                onClick={
+                    () => {
+                    auth.login(() => {
+                        props.history.push("./admin")
+                    })
+
+                }}
             >
                 Login
             </Button>

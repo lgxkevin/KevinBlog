@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import axios from 'axios';
 import MarkdownPreview from './MarkdownPreview'
+import auth from "../services/auth";
 
 type FormElement = React.FormEvent<HTMLFormElement>
 
-export default function AdminComponent(): JSX.Element {
+export default function AdminComponent(props: any): JSX.Element {
     const [file, setFile] = useState<File>();
 
     const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -43,6 +44,15 @@ export default function AdminComponent(): JSX.Element {
                 onChange={event => handleFileUpload(event)}
             />
             <button type='submit'>Send</button>
+            <button
+                onClick={() => {
+                    auth.logout(() => {
+                        props.history.push("/");
+                    });
+                }}
+            >
+                Logout
+            </button>
         </form>
 
         // <MarkdownPreview/>
