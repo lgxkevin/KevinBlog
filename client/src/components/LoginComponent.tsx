@@ -23,6 +23,10 @@ export default function LoginComponent(props:any):JSX.Element {
 
     const LoginCheck = ():void => {
         // Nav to AdminComponent if success
+        auth.login(() => {
+            props.history.push("./admin")
+        });
+
         console.log('Button clicked!')
     };
 
@@ -34,6 +38,7 @@ export default function LoginComponent(props:any):JSX.Element {
                 label="Username"
                 margin="normal"
                 variant="outlined"
+                autoFocus={true}
             />
             <TextField
                 id="outlined-basic"
@@ -47,12 +52,7 @@ export default function LoginComponent(props:any):JSX.Element {
                 variant="contained"
                 color="primary"
                 onClick={
-                    () => {
-                    auth.login(() => {
-                        props.history.push("./admin")
-                    })
-
-                }}
+                    () => LoginCheck}
             >
                 Login
             </Button>

@@ -15,7 +15,7 @@ export const ProtectedRoute: React.FC<RouteProps> = ({component: Component, ...r
                     return (
                         <Redirect
                             to={{
-                                pathname: "/",
+                                pathname: "/login",
                                 state: {
                                     from: props.location
                                 }

@@ -19,8 +19,8 @@ const ContentContainer = () => {
           <Route path='/blog' component={Blog}/>
           <Route path='/blogArticles' component={BlogArticle}/>
           <Route exact path="/" component={Home}/>
-          <Route path='/admin' component={AdminComponent}/>
-          <ProtectedRoute exact path="/app" component={AdminComponent} />
+          <Route path='/login' component={LoginComponent}/>
+          <ProtectedRoute exact path="/admin" component={AdminComponent} />
           <Route path="*" component = {() => "404 NOT FOUND"}/>
         </Switch>
       </Grid>
