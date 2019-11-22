@@ -3,6 +3,12 @@ import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import auth from '../services/auth';
+import {useState} from "react";
+
+interface UserValidationState {
+    username: string,
+    password: string
+}
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -20,14 +26,24 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function LoginComponent(props:any):JSX.Element {
     const classes = useStyles();
+    const [values, setValues] = useState<UserValidationState>({
+        username: '',
+        password: ''
+    });
+
+    const handleChange = (name: keyof UserValidationState) => (event: React.ChangeEvent<HTMLInputElement>) => {
+        setValues({
+            ...values,
+            [name]: event.target.value
+        })
+        console.log('values: ', values);
+    };
 
     const LoginCheck = ():void => {
         // Nav to AdminComponent if success
         auth.login(() => {
             props.history.push("./admin")
         });
-
-        console.log('Button clicked!')
     };
 
     return (
@@ -39,6 +55,8 @@ export default function LoginComponent(props:any):JSX.Element {
                 margin="normal"
                 variant="outlined"
                 autoFocus={true}
+                value={values.username}
+                onChange={handleChange('username')}
             />
             <TextField
                 id="outlined-basic"
@@ -47,6 +65,8 @@ export default function LoginComponent(props:any):JSX.Element {
                 label="Outlined"
                 margin="normal"
                 variant="outlined"
+                value={values.password}
+                onChange={handleChange('password')}
             />
             <Button
                 variant="contained"
