@@ -30,20 +30,25 @@ export default function LoginComponent(props:any):JSX.Element {
         username: '',
         password: ''
     });
+    const [errorMessage, setErrorMessage] = useState<string>('');
 
     const handleChange = (name: keyof UserValidationState) => (event: React.ChangeEvent<HTMLInputElement>) => {
         setValues({
             ...values,
             [name]: event.target.value
-        })
+        });
         console.log('values: ', values);
     };
 
     const LoginCheck = ():void => {
         // Nav to AdminComponent if success
+        if (values.username !== 'kevin' || values.password !== '110wasd'){
+            setErrorMessage('Username and password are not match.');
+        } else {
         auth.login(() => {
             props.history.push("./admin")
         });
+        }
     };
 
     return (
@@ -57,6 +62,7 @@ export default function LoginComponent(props:any):JSX.Element {
                 autoFocus={true}
                 value={values.username}
                 onChange={handleChange('username')}
+                error={errorMessage !== ''}
             />
             <TextField
                 id="outlined-basic"
@@ -67,12 +73,13 @@ export default function LoginComponent(props:any):JSX.Element {
                 variant="outlined"
                 value={values.password}
                 onChange={handleChange('password')}
+                error={errorMessage !== ''}
             />
             <Button
                 variant="contained"
                 color="primary"
                 onClick={
-                    () => LoginCheck}
+                    () => LoginCheck()}
             >
                 Login
             </Button>
