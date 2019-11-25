@@ -63,6 +63,7 @@ export default function LoginComponent(props:any):JSX.Element {
                 value={values.username}
                 onChange={handleChange('username')}
                 error={errorMessage !== ''}
+                helperText={errorMessage}
             />
             <TextField
                 id="outlined-basic"
@@ -76,7 +77,6 @@ export default function LoginComponent(props:any):JSX.Element {
                 error={errorMessage !== ''}
             />
             <Button
-                variant="contained"
                 color="primary"
                 onClick={
                     () => LoginCheck()}
