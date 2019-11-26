@@ -1,5 +1,6 @@
 const fileUploading = require('../utils/fileUploading');
 const fs = require('fs');
+const Article = require('../models/Article');
 
 exports.testing = (req, res, next) => {
   res.send('Hello World!');
@@ -19,14 +20,13 @@ exports.postBlog = async (req, res, next) => {
     const path = file.path;
     const buffer = fs.readFileSync(path);
 
-    // const contentType = mime.getType(path);
-    // const type = {
-    //   contentType: contentType,
-    //   fileType: mime.getExtension(contentType)
-    // };
-
     const fileName = file.name;
     const data = await fileUploading.fileUploading(buffer, fileName);
+
+    // write data in database
+    const newArticle = new Article({
+
+    })
 
     return res.status(200).send(data);
 

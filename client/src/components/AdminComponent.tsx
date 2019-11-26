@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import axios from 'axios';
 import MarkdownPreview from './MarkdownPreview'
 import auth from "../services/auth";
@@ -7,19 +7,36 @@ type FormElement = React.FormEvent<HTMLFormElement>
 
 export default function AdminComponent(props: any): JSX.Element {
     const [file, setFile] = useState<File>();
+    const [tags, setTags] = useState<Array<string>>([]);
+    const [tagInput, setTagInput] = useState<string>('');
+
+    useEffect(() => {
+        console.log(tags);
+    }, [tags]);
+
+    const OnTagInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        setTagInput(event.target.value)
+    };
+
+    const addTags = (event: React.KeyboardEvent): void => {
+        if (event.key === 'Enter') {
+            let updateTags = tags.concat(tagInput);
+            setTags(updateTags);
+            setTagInput('');
+        }
+    };
 
     const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>): void => {
         if (!event.target.files) {
-            console.log('No file selected')
+            console.log('No file upload')
         } else {
             setFile(event.target.files[0]);
         }
     };
 
-    const submitFile = (event: FormElement): void => {
-        event.preventDefault();
+    const submitFile = (): void => {
         if (!file) {
-            console.error('No file selected');
+            console.error('No file submit');
         } else {
             const formData = new FormData();
             formData.append('file', file);
@@ -38,13 +55,29 @@ export default function AdminComponent(props: any): JSX.Element {
     };
 
     return (
-        <form onSubmit={event => submitFile(event)}>
+        <form>
             <input
                 type='file'
                 onChange={event => handleFileUpload(event)}
-            />
-            <button type='submit'>Send</button>
+            /> <br/>
+            <input placeholder='Title *'/><br/>
+            <input placeholder='Subtitle*'/><br/>
+            <input placeholder='tags'
+                   value={tagInput}
+                   onChange={
+                       event => OnTagInputChange(event)
+                   }
+                   onKeyDown={
+                       event => addTags(event)
+                   }/><br/>
+            <button type='button' onClick={
+                () => submitFile()
+            }>
+                Submit
+            </button>
+            <br/>
             <button
+                type='button'
                 onClick={() => {
                     auth.logout(() => {
                         props.history.push("/");

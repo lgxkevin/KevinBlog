@@ -16,10 +16,6 @@ const ArticleSchema = new Schema({
     type: String,
     required: true
   },
-  author: {
-    type: String,
-    required: true
-  },
   time_created: {
     type: Date,
     required: true,

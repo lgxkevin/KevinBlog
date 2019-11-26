@@ -1,9 +1,8 @@
-import * as React from 'react';
+import React, {useState}  from 'react';
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import auth from '../services/auth';
-import {useState} from "react";
 
 interface UserValidationState {
     username: string,
@@ -37,7 +36,6 @@ export default function LoginComponent(props:any):JSX.Element {
             ...values,
             [name]: event.target.value
         });
-        console.log('values: ', values);
     };
 
     const LoginCheck = ():void => {
