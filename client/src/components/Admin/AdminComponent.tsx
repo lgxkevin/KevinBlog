@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
-import MarkdownPreview from './MarkdownPreview'
-import auth from "../services/auth";
+import auth from "../../services/auth";
+import ArticleTagsComponent from "./ArticleTagsComponent";
 
 type FormElement = React.FormEvent<HTMLFormElement>
 
@@ -24,6 +24,13 @@ export default function AdminComponent(props: any): JSX.Element {
             setTags(updateTags);
             setTagInput('');
         }
+    };
+
+    const removeTag = (position: number):void => {
+        let updatedTags = tags.filter(function (value, index, array) {
+            return position!== index;
+        });
+        setTags(updatedTags);
     };
 
     const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -55,40 +62,38 @@ export default function AdminComponent(props: any): JSX.Element {
     };
 
     return (
-        <form>
-            <input
-                type='file'
-                onChange={event => handleFileUpload(event)}
-            /> <br/>
-            <input placeholder='Title *'/><br/>
-            <input placeholder='Subtitle*'/><br/>
-            <input placeholder='tags'
-                   value={tagInput}
-                   onChange={
-                       event => OnTagInputChange(event)
-                   }
-                   onKeyDown={
-                       event => addTags(event)
-                   }/><br/>
-            <button type='button' onClick={
-                () => submitFile()
-            }>
-                Submit
-            </button>
-            <br/>
-            <button
-                type='button'
-                onClick={() => {
-                    auth.logout(() => {
-                        props.history.push("/");
-                    });
-                }}
-            >
-                Logout
-            </button>
-        </form>
+            <form>
+                <input
+                    type='file'
+                    onChange={event => handleFileUpload(event)}
+                />
+                <br/>
+                <input placeholder='Title *'/><br/>
+                <input placeholder='Subtitle*'/><br/>
+                <input placeholder='tags'
+                       value={tagInput}
+                       onChange={event => OnTagInputChange(event)}
+                       onKeyDown={event => addTags(event)}/>
+                <br/>
 
-        // <MarkdownPreview/>
+                <ArticleTagsComponent tags={tags} deleteTag={removeTag}/>
+
+                <button type='button'
+                        onClick={() => submitFile()}>
+                    Submit
+                </button>
+                <br/>
+                <button
+                    type='button'
+                    onClick={() => {
+                        auth.logout(() => {
+                            props.history.push("/");
+                        });
+                    }}
+                >
+                    Logout
+                </button>
+            </form>
     )
 };
 
