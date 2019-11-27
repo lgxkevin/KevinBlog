@@ -19,16 +19,16 @@ export default function AdminComponent(props: any): JSX.Element {
     };
 
     const addTags = (event: React.KeyboardEvent): void => {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' && tagInput !== '') {
             let updateTags = tags.concat(tagInput);
             setTags(updateTags);
             setTagInput('');
         }
     };
 
-    const removeTag = (position: number):void => {
+    const removeTag = (position: number): void => {
         let updatedTags = tags.filter(function (value, index, array) {
-            return position!== index;
+            return index !== position;
         });
         setTags(updatedTags);
     };
@@ -62,38 +62,38 @@ export default function AdminComponent(props: any): JSX.Element {
     };
 
     return (
-            <form>
-                <input
-                    type='file'
-                    onChange={event => handleFileUpload(event)}
-                />
-                <br/>
-                <input placeholder='Title *'/><br/>
-                <input placeholder='Subtitle*'/><br/>
-                <input placeholder='tags'
-                       value={tagInput}
-                       onChange={event => OnTagInputChange(event)}
-                       onKeyDown={event => addTags(event)}/>
-                <br/>
+        <form>
+            <input
+                type='file'
+                onChange={event => handleFileUpload(event)}
+            />
+            <br/>
+            <input placeholder='Title *'/><br/>
+            <input placeholder='Subtitle*'/><br/>
+            <input placeholder='tags'
+                   value={tagInput}
+                   onChange={event => OnTagInputChange(event)}
+                   onKeyDown={event => addTags(event)}/>
+            <br/>
 
-                <ArticleTagsComponent tags={tags} deleteTag={removeTag}/>
+            <ArticleTagsComponent tags={tags} deleteTag={removeTag}/>
 
-                <button type='button'
-                        onClick={() => submitFile()}>
-                    Submit
-                </button>
-                <br/>
-                <button
-                    type='button'
-                    onClick={() => {
-                        auth.logout(() => {
-                            props.history.push("/");
-                        });
-                    }}
-                >
-                    Logout
-                </button>
-            </form>
+            <button type='button'
+                    onClick={() => submitFile()}>
+                Submit
+            </button>
+            <br/>
+            <button
+                type='button'
+                onClick={() => {
+                    auth.logout(() => {
+                        props.history.push("/");
+                    });
+                }}
+            >
+                Logout
+            </button>
+        </form>
     )
 };
 

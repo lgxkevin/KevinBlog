@@ -13,7 +13,12 @@ export default function ArticleTagsComponent(props: ArticleTagsComponentProps) {
 
     return (
         <div>
-           { props.tags.map((value, index) => <Chip key={index} size="small" onDelete={(index) => handleDelete(index)}/>)}
+           { props.tags.map((value, index) =>
+               <Chip key={index}
+                     size="small"
+                     label={value}
+                     onDelete={() => handleDelete(index)}
+               />)}
         </div>
     )
 }
