@@ -10,7 +10,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const mongoose = require('mongoose');
-let mongoConnectionString = `mongodb+srv://${keys.mongoUsername}:${keys.mongoPassword}@cluster0-ghwpk.mongodb.net/test?retryWrites=true&w=majority`
+let mongoConnectionString = `mongodb+srv://${keys.mongoUsername}:${keys.mongoPassword}@cluster0-ghwpk.mongodb.net/kevinBlog?retryWrites=true&w=majority`
 // let mongoConnectionString = 'mongodb://localhost:27017'
 // Connect to MongoDB
 mongoose
