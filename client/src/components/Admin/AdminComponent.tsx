@@ -18,8 +18,12 @@ export default function AdminComponent(props: any): JSX.Element {
         setTagInput(event.target.value)
     };
 
+    const checkDuplicateTag = (): boolean => {
+        return !tags.includes(tagInput);
+    };
+
     const addTags = (event: React.KeyboardEvent): void => {
-        if (event.key === 'Enter' && tagInput !== '') {
+        if (event.key === 'Enter' && tagInput !== '' && checkDuplicateTag) {
             let updateTags = tags.concat(tagInput);
             setTags(updateTags);
             setTagInput('');
@@ -27,9 +31,9 @@ export default function AdminComponent(props: any): JSX.Element {
     };
 
     const removeTag = (position: number): void => {
-        let updatedTags = tags.filter(function (value, index, array) {
-            return index !== position;
-        });
+        let updatedTags = tags.filter(
+            (value, index, array) => index !== position
+        );
         setTags(updatedTags);
     };
 
