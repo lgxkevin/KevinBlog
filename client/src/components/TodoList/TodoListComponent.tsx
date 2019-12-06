@@ -17,11 +17,17 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function TodoListComponent() {
+    const classes = useStyles();
     const [todoItem, setTodoItem] = useState<string>('');
     const [todoList, setTodoList] = useState<Array<string>>();
+    const [ratio, setRatio] = React.useState('female');
 
     const OnTodoItemInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         setTodoItem(event.target.value)
+    };
+
+    const handleRatioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setRatio((event.target as HTMLInputElement).value);
     };
 
     return (
@@ -33,7 +39,7 @@ export default function TodoListComponent() {
 
             <FormControl component="fieldset" className={classes.formControl}>
                 <FormLabel component="legend">Gender</FormLabel>
-                <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
+                <RadioGroup aria-label="gender" name="gender1" value={ratio} onChange={handleRatioChange}>
                     <FormControlLabel value="female" control={<Radio />} label="Female" />
                     <FormControlLabel value="male" control={<Radio />} label="Male" />
                     <FormControlLabel value="other" control={<Radio />} label="Other" />
