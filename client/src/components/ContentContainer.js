@@ -5,7 +5,7 @@ import Home from './Home';
 import About from './About'
 import Blog from './Blog'
 import BlogArticle from "./BlogArticle";
-import AdminComponent from './AdminComponent'
+import AdminComponent from './Admin/AdminComponent'
 import LoginComponent from "./LoginComponent";
 import {ProtectedRoute} from './protected.route'
 
@@ -19,8 +19,9 @@ const ContentContainer = () => {
           <Route path='/blog' component={Blog}/>
           <Route path='/blogArticles' component={BlogArticle}/>
           <Route exact path="/" component={Home}/>
-          <Route path='/login' component={LoginComponent}/>
-          <ProtectedRoute exact path="/admin" component={AdminComponent} />
+          {/*<Route path='/login' component={LoginComponent}/>*/}
+          <Route path='/admin' component={AdminComponent}/>
+          {/*<ProtectedRoute exact path="/admin" component={AdminComponent} />*/}
           <Route path="*" component = {() => "404 NOT FOUND"}/>
         </Switch>
       </Grid>
