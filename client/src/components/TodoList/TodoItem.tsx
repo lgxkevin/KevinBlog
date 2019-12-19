@@ -12,6 +12,6 @@ interface TodoItemTags{
 
 export default function TodoItem(props: TodoItemInterface){
     return (
-        <div>Items</div>
+        <div>{props.name}</div>
     )
 }

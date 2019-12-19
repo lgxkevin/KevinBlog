@@ -11,4 +11,5 @@
   
 :file_folder: Compress Image [**here**](https://tinyjpg.com/)  
 
-:heart_eyes: Complete list of mardown [**Emoji**](https://gist.github.com/rxaviers/7360908)
+:heart_eyes: Complete list of markdown [**Emoji**](https://gist.github.com/rxaviers/7360908)
+
