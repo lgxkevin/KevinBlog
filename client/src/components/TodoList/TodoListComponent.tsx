@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import {makeStyles, Theme, createStyles} from '@material-ui/core/styles';
 import TodoItem from "./TodoItem";
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -19,11 +19,28 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function TodoListComponent() {
     const classes = useStyles();
     const [todoItem, setTodoItem] = useState<string>('');
-    const [todoList, setTodoList] = useState<Array<string>>();
+    const [todoList, setTodoList] = useState<Array<string>>([]);
     const [ratio, setRatio] = React.useState('female');
 
     const OnTodoItemInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        setTodoItem(event.target.value)
+        setTodoItem(event.target.value);
+    };
+
+    const OnPressEnter = (event: React.KeyboardEvent): void => {
+        if (event.key === 'Enter' && todoItem !== '') {
+            updateTodoList(todoItem);
+            clearInput();
+            console.log(todoList);
+        }
+    };
+
+    const updateTodoList = (newTodoItem: string): void => {
+        todoList.push(newTodoItem);
+        setTodoList(todoList);
+    };
+
+    const clearInput = (): void => {
+        setTodoItem("");
     };
 
     const handleRatioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,21 +49,22 @@ export default function TodoListComponent() {
 
     return (
         <div>
-        <input placeholder = 'Input todo items here'
-               value={todoItem}
-               onChange={event => OnTodoItemInputChange(event)}
-        />
+            <input placeholder='Input todo items here'
+                   value={todoItem}
+                   onChange={event => OnTodoItemInputChange(event)}
+                   onKeyDown={event => OnPressEnter(event)}
+            />
 
             <FormControl component="fieldset" className={classes.formControl}>
                 <FormLabel component="legend">Gender</FormLabel>
                 <RadioGroup aria-label="gender" name="gender1" value={ratio} onChange={handleRatioChange}>
-                    <FormControlLabel value="female" control={<Radio />} label="Female" />
-                    <FormControlLabel value="male" control={<Radio />} label="Male" />
-                    <FormControlLabel value="other" control={<Radio />} label="Other" />
+                    <FormControlLabel value="female" control={<Radio/>} label="Female"/>
+                    <FormControlLabel value="male" control={<Radio/>} label="Male"/>
+                    <FormControlLabel value="other" control={<Radio/>} label="Other"/>
                     <FormControlLabel
                         value="disabled"
                         disabled
-                        control={<Radio />}
+                        control={<Radio/>}
                         label="(Disabled option)"
                     />
                 </RadioGroup>

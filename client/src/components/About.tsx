@@ -12,6 +12,7 @@ import ExploreIcon from '@material-ui/icons/Explore';
 
 import VideoTab from './AboutTabPabelComponents/VideoTab'
 import SkillsTab from "./AboutTabPabelComponents/SkillsTab";
+import PlaygroundTab from "./AboutTabPabelComponents/PlaygroundTab";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -69,7 +70,7 @@ export default function FullWidthTabs():JSX.Element {
                 >
                     <Tab icon={<OndemandVideoOutlinedIcon/>} label="Liked Videos" {...a11yProps(0)} />
                     <Tab icon={<DescriptionOutlinedIcon/>} label="Skills" {...a11yProps(1)} />
-                    <Tab icon={<ExploreIcon/>} label="journey" {...a11yProps(2)} />
+                    <Tab icon={<ExploreIcon/>} label="Playground" {...a11yProps(2)} />
                 </Tabs>
             </AppBar>
             <SwipeableViews
@@ -84,7 +85,7 @@ export default function FullWidthTabs():JSX.Element {
                     <SkillsTab/>
                 </TabPanel>
                 <TabPanel value={value} index={2} dir={theme.direction}>
-                    Coming soon...
+                    <PlaygroundTab/>
                 </TabPanel>
             </SwipeableViews>
         </div>
