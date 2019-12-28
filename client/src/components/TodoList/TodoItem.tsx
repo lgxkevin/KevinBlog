@@ -1,16 +1,7 @@
 import React from "react";
+import {TodoItem, TodoItemTags} from "../../Interfaces/ITodoItem";
 
-interface TodoItemInterface{
-    name: string,
-    tags?: Array<TodoItemTags>,
-    icon?: string
-}
-interface TodoItemTags{
-    tagName: string,
-    color?: string
-}
-
-export default function TodoItem(props: TodoItemInterface){
+export default function TodoItem(props: TodoItem){
     return (
         <div>{props.name}</div>
     )
