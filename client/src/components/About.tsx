@@ -89,5 +89,6 @@ export default function FullWidthTabs():JSX.Element {
                 </TabPanel>
             </SwipeableViews>
         </div>
+
     )
 };
