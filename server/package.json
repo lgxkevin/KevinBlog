@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "aws-sdk": "^2.566.0",
+    "aws-sdk": "^2.814.0",
     "body-parser": "*",
     "connect-multiparty": "^2.2.0",
     "cors": "2.8.4",
